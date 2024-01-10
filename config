@@ -6,8 +6,7 @@
 
 ### Variables
 #
-set $output-primary HDMI-A-1
-set $output-secondary eDP-1
+set $output-primary HDMI-A-1 pos
 # Logo key. Use Mod1 for Alt.
 set $mod Mod1
 # Home row direction keys, like vim
@@ -21,8 +20,6 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-exec mako-notifier
-
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -30,44 +27,13 @@ output * bg #00000f solid_color
 #output * bg /home/hex/Pictures/oskar.jpg fill
 
 
-output HDMI-A-1 pos 1920 0 res 1920x1080@144Hz 
-output eDP-1 pos 0 0
+output HDMI-A-1 pos 0 0 res 1920x1080@144Hz 
 
-#
-# Example configuration:
-#
-#
+
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# You can get the names of your inputs by running: swaymsg -t get_inputs
 
 ## Input configuration
-
-## Example configuration:
-
-# "SYNA32AA:00 06CB:CE17 Touchpad" {
-input type:touchpad {
-	dwt enabled
-	tap enabled
-	natural_scroll enabled
-	middle_emulation enabled
-	accel_profile "flat"
-	pointer_accel 0.6
-}
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -214,7 +180,8 @@ bindsym $mod+r mode "resize"
 default_border pixel 1
 client.focused #000000 #000000 #ffffff #000000 #000000
 
-workspace_layout tabbed
+# change default layout
+# workspace_layout split
 #
 # Status Bar:
 #
